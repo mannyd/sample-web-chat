@@ -1,0 +1,41 @@
+.Twilio-MessageListItem-AvatarContainer,
+.Twilio-MessageBubble-UserName,
+.Twilio-InlineMessage {
+    display: none;
+}
+
+.Twilio-MessageInput textarea {
+    border: 1px solid black !important;
+    width: 234px;
+}
+
+/*.Twilio-MessageBubble-Body {
+    border-radius: 25px;
+}
+
+.Twilio-MessageListItem-ContentContainer {
+    padding: 0px 0px 0px 10px;
+}*/
+
+.Twilio-MessageBubble {
+    border-radius: 12px !important;
+}
+
+.Twilio-MessageBubble-Time {
+    position: absolute;
+    bottom: 1px;
+    right: 12px;
+    color: white;
+}
+
+.Twilio-MessageBubble-default {
+    padding-bottom: 8px;
+    /*flex-direction: row-reverse;*/
+}
+
+/*.Twilio-MessageBubble-Body + div {
+    padding-top:0px !important;
+    padding-right:10px !important;
+    margin:0px !important;
+    border:0px !important;
+}*/

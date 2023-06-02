@@ -1,0 +1,66 @@
+.Twilio-MainHeader-default>img {
+  max-height: 40px;
+  max-width: 156px;
+  margin-left: 0;
+}
+
+.Twilio-MessageInput {
+  padding: 0;
+}
+
+.Twilio-MainContainer {
+  z-index: 1001;
+  bottom: 90px;
+}
+
+.Twilio-PreEngagementCanvas {
+  padding-top: 0px !important;
+}
+
+.Twilio-PreEngagementCanvas [id$='select-Select Category'] {
+  border: 1px solid black;
+}
+
+.Twilio-PreEngagementCanvas input,
+.Twilio-PreEngagementCanvas textarea {
+  border: 1px solid black;
+}
+
+.Twilio-MainHeader {
+  height: 25px
+}
+
+.Twilio-EntryPoint {
+  display: block;
+  text-align: center;
+}
+
+::placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+::-webkit-input-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+::-ms-input-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+#twilio-customer-frame .jss1 {
+  position:static !important;
+  height: auto !important
+}
+
+#twilio-customer-frame .jss2 {
+  background: transparent !important;
+}
+
+@media screen and (max-width:480px) {
+  button[class^="Twilio Twilio-EntryPoint"] {
+    bottom: 81px;
+  }
+}

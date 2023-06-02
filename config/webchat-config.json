@@ -1,0 +1,22 @@
+{
+    "dev": {
+      "accountSid": "AC614ccf8ec78d6f1a6d183b32f3474a33",
+      "flowSid": "FOd72214f1cd6822698698580990221e4c",
+      "awsEndpoint": "https://nmg-enterprise-nonprod.nmgcloud.io/ccc-dev-core/"
+    },
+    "master": {
+      "accountSid": "ACc133a04a6be60bee3bc21c7272407cd4",
+      "flowSid": "FO4558cf6c9e5a5a5d9bc9d7440187d4f7",
+      "awsEndpoint": "https://nmg-enterprise-nonprod.nmgcloud.io/ccc-qa-core/"
+    },
+    "preprod": {
+      "accountSid": "ACa01e8ddd02c436753437aba23bd0281f",
+      "flowSid": "FO40fb27d37c3453a05fb3eb5c72de70d6",
+      "awsEndpoint": "https://nmg-enterprise-prod.nmgcloud.io/ccc-preprod-core/"
+    },
+    "prod": {
+      "accountSid": "ACdd86b3a7f858f6f4672f54755ce42a7c",
+      "flowSid": "FOd928bdd92ac27e5ead03a30cfddd0ab8",
+      "awsEndpoint": "https://nmg-enterprise-prod.nmgcloud.io/ccc-prod-core/"
+    }
+  }

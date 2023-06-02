@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>QA Environment</title>
+    <script src="https://assets.flex.twilio.com/releases/flex-webchat-ui/2.9.1/twilio-flex-webchat.min.js"></script>
+    <!--
+      Use `npm run build:qa` to generate an `qa/index.html` to provide to QA testers if you want to provide your current local changes
+      ~~otherwise~~
+      Uncomment this line and just provide a copy of `src/qa-index.html` instead (will use deployed QA widget script)
+      <script src="https://ccc-core-qa.nmgcloud.io/buildFiles/nm-webchat-widget.min.js"></script>
+    -->
+    <style type="text/css">
+      .nm-table {
+        font-size: 12px;
+        color: #fbfbfb;
+        max-width: 50%;
+        border-width: 1px;
+        border-color: #686767;
+        border-collapse: collapse;
+      }
+      .nm-table th {
+        font-size: 12px;
+        background-color: #171515;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #686767;
+        text-align: left;
+      }
+      .nm-table td {
+        font-size: 12px;
+        color: #171515;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #686767;
+      }
+      .below-input {
+        margin-top: 1em;
+      }
+      button {
+        cursor: pointer;
+      }
+      input[type='submit'] {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body style="margin: 0">
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <table class="nm-table" border="1">
+      <tr>
+        <th>Action</th>
+        <th>Description</th>
+        <th>Trigger</th>
+      </tr>
+      <tr>
+        <td>Restart</td>
+        <td>
+          <div><b>*required when switching brands*</b></div>
+          <div>1. Click "Restart", 2. Select brand, 3. Click "Initialize"</div>
+        </td>
+        <td><button onclick="window.location.reload()">Restart</button></td>
+      </tr>
+      <tr>
+        <td>Initialize Webchat Widget</td>
+        <td>Starts widget instance with selected brand configuration</td>
+        <td>
+          <div><label for="brand-select">Choose a brand:</label></div>
+          <div>
+            <select name="brands" id="brand-select" value="Sample">
+              <option value="Sample">Sample</option>
+              <option value="Bergdorf Goodman">Bergdorf Goodman</option>
+              <option value="Horchow">Horchow</option>
+            </select>
+          </div>
+          <button class="below-input" onclick="initializeWidget()">
+            Initialize
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Set Customer Data</td>
+        <td>
+          Provide customer data ahead of time (ie. customer is logged into NM
+          account)
+        </td>
+        <td>
+          <form id="customer-form" onsubmit="return setCustomerData(event)">
+            <label for="firstName">First Name:</label><br />
+            <input type="text" id="firstName" name="firstName" /><br />
+            <label for="emailAddr">Email Address:</label><br />
+            <input type="email" id="emailAddr" name="emailAddr" /><br />
+            <input class="below-input" type="submit" value="Set" />
+            <button
+              type="button"
+              class="below-input"
+              onclick="resetCustomerData(event)"
+            >
+              Reset
+            </button>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>Trigger Style Advisor</td>
+        <td>Triggers the Style Advisor chat if skilled agent is available</td>
+        <td>
+          <div><label for="event-type-select">Choose a Event Type:</label></div>
+          <div>
+            <select name="eventType" id="event-type-select">
+              <option value="WomensDressesCategoryEventType">Womens Dresses Category</option>
+              <option value="HolidayEventType">HOLIDAY</option>
+            </select>
+          </div>
+          <div>
+            <button class="below-input" onclick="openProactiveChat()">Trigger</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Trigger Brand Advisor</td>
+        <td>
+          Triggers the Brand Advisor pre-engagement form, if skilled agent for chosen brand is available
+        </td>
+        <td>
+          <div><label for="product-select">Choose a Brand:</label></div>
+          <div>
+            <select name="products" id="product-select">
+              <option value="AcquadiParmaEventType">Acqua di Parma</option>
+              <option value="AERINEventType">AERIN</option>
+              <option value="AERINEventType">Aerin for Visual Comfort Signature</option>
+              <option value="AesopEventType">Aesop</option>
+              <option value="AMOREPACIFICEventType">AMOREPACIFIC</option>
+              <option value="ARMANIBeautyEventType">ARMANI Beauty</option>
+              <option value="AugustinusBaderEventType">Augustinus Bader</option>
+              <option value="DrBarbaraSturmEventType">Dr. Barbara Sturm</option>
+              <option value="BobbiBrownEventType">Bobbi Brown</option>
+              <option value="ByredoEventType">Byredo</option>
+              <option value="ChantecailleEventType">Chantecaille</option>
+              <option value="CledePeauBeauteEventType">Cle de Peau Beaute</option>
+              <option value="CliveChristianEventType">Clive Christian</option>
+              <option value="CREEDEventType">CREED</option>
+              <option value="DiorEventType">Dior</option>
+              <option value="EsteeLauderEventType">Estee Lauder</option>
+              <option value="FredericMalleEventType">Frederic Malle</option>
+              <option value="GivenchyEventType">Givenchy</option>
+              <option value="GuerlainEventType">Guerlain</option>
+              <option value="HourglassCosmeticsEventType">Hourglass Cosmetics</option>
+              <option value="InitioParfumsPrivesEventType">Initio Parfums Prives</option>
+              <option value="JoMaloneLondonEventType">Jo Malone London</option>
+              <option value="KilianEventType">Kilian</option>
+              <option value="LaMerEventType">La Mer</option>
+              <option value="LaPrairieEventType">La Prairie</option>
+              <option value="LancomeEventType">Lancome</option>
+              <option value="LauraMercierEventType">Laura Mercier</option>
+              <option value="MaisonFrancisKurkdjianEventType">Maison Francis Kurkdjian</option>
+              <option value="MoltonBrownEventType">Molton Brown</option>
+              <option value="NaturaBisseEventType">Natura Biss&amp;eacute;</option>
+              <option value="OribeEventType">Oribe</option>
+              <option value="ReViveEventType">ReVive</option>
+              <option value="ShiseidoEventType">Shiseido</option>
+              <option value="SisleyParisEventType">Sisley-Paris</option>
+              <option value="SulwhasooEventType">Sulwhasoo</option>
+              <option value="SundayRileyModernSkincareEventType">Sunday Riley</option>
+              <option value="SundayRileyModernSkincareEventType">Sunday Riley Modern Skincare</option>
+              <option value="TOMFORDEventType">TOM FORD</option>
+              <option value="TrishMcEvoyEventType">Trish McEvoy</option>
+              <option value="VintnersDaughterEventType">Vintner's Daughter</option>
+              <option value="YvesSaintLaurentBeauteEventType">Yves Saint Laurent Beaute</option>
+            </select>
+          </div>
+          <div>
+            <button class="below-input" onclick="openSpecialistChat()">
+              Trigger
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script type="text/javascript">
+      function getBrandInfoFromNMO(label) {
+        const brandsList = Object.keys(window.getBrands());
+        const brandFound = brandsList.find(brand => brand.toLowerCase() === label.toLowerCase());
+        const eventType = brandFound ? window.getBrands()[brandFound].eventType : undefined;
+        const beautyBrand = brandFound ? window.getBrands()[brandFound].brandNameToBeDisplayed : brandFound;
+        console.log("eventType, beautyBrand: ", eventType, beautyBrand);
+        return { eventType, beautyBrand };
+      }
+
+      function initializeWidget() {
+        var brand = document.getElementById('brand-select').value;
+        SampleWebchat.init(brand);
+      }
+      function setCustomerData(event) {
+        event.preventDefault();
+        const { firstName, emailAddr } = event.target.elements;
+        SampleWebchat.setCustomerData({
+          firstName: firstName.value,
+          emailAddr: emailAddr.value
+        });
+        return false;
+      }
+      function resetCustomerData(event) {
+        const { firstName, emailAddr } = event.target.form.elements;
+        firstName.value = '';
+        emailAddr.value = '';
+        SampleWebchat.setCustomerData(undefined);
+      }
+      function openProactiveChat() {
+        var element = document.getElementById('event-type-select');
+        var eventType = element.options[element.selectedIndex].value;
+
+        SampleWebchat.openProactiveChat({
+          eventType,
+          currentUrl: window.location.href
+        });
+      }
+      function openSpecialistChat() {
+        var element = document.getElementById('product-select');
+        const brandInfo = getBrandInfoFromNMO(element.options[element.selectedIndex].label);
+        var product = brandInfo.beautyBrand;
+        window.utag_data_dt = {
+          bread_crumb: {
+            0: "Women",
+            1: "Designers",
+            2: product,
+            3: "Women's"
+          }
+        };
+        var eventType = brandInfo.eventType;
+        SampleWebchat.openProactiveChat({
+          product,
+          eventType,
+          currentUrl: window.location.href
+        });
+      }
+    </script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
