@@ -5,7 +5,7 @@ This project is set up for developing a custom Twilio web chat widget. It offers
 * 2022-12-20-2
 
 ## Standard CICD Best Practice
-Merge code into Bitbucket.org/mynmg and allow the webhook to fire a Jenkins pipeline to complete deployments to dev and qa.
+Merge code into Bitbucket.org and allow the webhook to fire a Jenkins pipeline to complete deployments to dev and qa.
 
 ## Manual Setup
 Make sure you have [Node.js](https://nodejs.org) as well as [`npm`](https://npmjs.com) installed.

@@ -1,4 +1,4 @@
-import { isImage, getDataURL, getRandomAvatars } from './file-helpers';
+import { isImage, getDataURL } from './file-helpers';
 import { insertEmoji, findLastIndexOf } from './input-helpers';
 import { upload } from './attachment-helpers';
 import {
@@ -9,8 +9,7 @@ import { setAATagsEventName, setUtagData, getUtagData, getBrandInfoFromNMO } fro
 
 export const FileHelpers = {
   isImage,
-  getDataURL,
-  getRandomAvatars
+  getDataURL
 };
 
 export const InputHelpers = {

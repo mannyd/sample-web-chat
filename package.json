@@ -4,7 +4,7 @@
   "description": "Twilio webchat widget",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.config.js",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --open --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "build:qa": "webpack --config webpack.qa.config.js",
     "test": "webpack --config webpack.test.config.js"

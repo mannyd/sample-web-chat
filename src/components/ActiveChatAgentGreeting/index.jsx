@@ -10,8 +10,7 @@ class ActiveChatAgentGreeting extends Component {
     super(props);
     const { flex } = props.manager.store.getState();
 
-    this.engagementType = flex.session.activeEngagmentType.engagementType;
-    this.isCustomerServ = flex.session.activeEngagmentType.isCustomerServ;
+    this.isCustomerServ = flex.session.activeEngagmentType?.isCustomerServ;
 
     this.state = {
       hasTransitionedToBrandWebchatQueue: false,
@@ -35,14 +34,6 @@ class ActiveChatAgentGreeting extends Component {
       let taskStatus = flex.chat.channels[channels[0]].source.channelState.attributes.status;
       const convStatus = flex.chat.channels[channels[0]].source.channelState.attributes.conversationStatus;
 
-      console.log('taskStatus: ', taskStatus, ', convStatus: ', convStatus);
-      if (taskStatus === 'INACTIVE' && (flex.session.enablePostChatReactive === 'true' || flex.session.enablePostChatProactive === 'true') && (this.engagementType === 'style' && !this.isCustomerServ)) {
-        if(!flex.session.AgentEndedChatInvoked) {
-          flex.session.AgentEndedChatInvoked = true;
-          Twilio.FlexWebChat.Actions.invokeAction('AgentEndedChat', {});
-        }
-      }
-
       if (convStatus !== undefined && (convStatus === 'Active' || convStatus === 'Reassigned')) {
         let enablePostChatReactive = flex.chat.channels[channels[0]].source.channelState.attributes?.enablePostChatReactive;
         let enablePostChatProactive = flex.chat.channels[channels[0]].source.channelState.attributes?.enablePostChatProactive;
@@ -53,23 +44,6 @@ class ActiveChatAgentGreeting extends Component {
         }
         if (enablePostChatProactive && flex.session.enablePostChatProactive ==='') {
           flex.session.enablePostChatProactive = enablePostChatProactive;
-        }
-        if (flex.session.agentEmails.length > 0) {
-          if (this.engagementType === 'style' && !this.isCustomerServ) {
-            let workerName = flex.chat.channels[channels[0]].source.channelState.attributes.agentName;
-            let associatePin = flex.chat.channels[channels[0]].source.channelState.attributes.associatePin;
-            if (flex.session.workerName === '') {
-              flex.session.workerName = workerName;
-
-              flex.session.sellerDetailsAPICalled = true;
-              this.getSellerProfileDetails(associatePin)
-            }
-            else if (flex.session.workerName !== workerName) {
-
-              flex.session.workerName = workerName;
-              this.getSellerProfileDetails(associatePin)
-            }
-          }
         }
       }
     }
@@ -101,23 +75,6 @@ class ActiveChatAgentGreeting extends Component {
     let conversationStatus2 = undefined;
     let queueName = undefined;
 
-    if (this.engagementType === 'beauty') {
-      const event = getPredefinedMessage(flex.session.activeEngagmentType.eventType);
-      const { beautyBrand } = UtagHelpers.getBrandInfoFromNMO();
-
-      title = beautyBrand + ' Advisor';
-
-      //For Brand Advisor, since we know the agent name upfront (based on proactive-chat.js)
-      //First and Last Initial, Beauty Advisor is derived here
-      specialistName = event.specialistName.split(" ")[0] + " " + event.specialistName.split(" ")[1].substring(0, 1) + '., Beauty Advisor';
-      formType = 'Beauty';
-      agentAvatar = `${event.specialistName?.replaceAll(' ', '')}.png`;
-    }
-    else if (this.engagementType === 'style') {
-      title = 'Style Advisor';
-      specialistName = null;
-      formType = 'Style';
-    }
     if (this.isCustomerServ) {
       title = 'Customer Service';
       specialistName = 'Agent';

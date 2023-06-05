@@ -9,8 +9,8 @@ export function preFillPreEngagementForm(data, widgetConfig) {
   return { ...config, fields: preFilledFields };
 }
 
- export const hoursOfOperation = {
-  checkHours: (openHour,closeHour) => {
+export const hoursOfOperation = {
+  checkHours: (openHour, closeHour) => {
     const now = moment().tz('America/Chicago');
     const openMoment = moment().tz('America/Chicago');
     const closeMoment = moment().tz('America/Chicago');
@@ -421,7 +421,7 @@ export const HorchowWidgetConfig = {
         Twilio.FlexWebChat.Actions.invokeAction("CloseChat");
       },
       showTitle: false,
-      imageUrl: 'https://res.cloudinary.com/nmg-prod/image/upload/b_rgb:000000,co_rgb:ffffff,e_colorize:100/v1630427045/content/stock/Horchow_Logo_SVG.png'
+      imageUrl: 'www.sample.com'
     }
   },
   colorTheme: {
