@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { withStyles, Grid, TextField } from '@material-ui/core';
+import { withStyles } from '@mui/styles';
 import AttachmentPicker from '../AttachmentPicker';
 import AttachmentItem from '../AttachmentItem';
 import styles from './styles';
 import { FileHelpers, InputHelpers, UtagHelpers } from '../../utils/helpers';
+import { Grid, TextField } from '@mui/material';
 
 class CustomerServicePreEngagementForm extends Component {
 
@@ -146,14 +147,13 @@ class CustomerServicePreEngagementForm extends Component {
             }
           `}
         </style>
-        <div className={classes.twcCustomerPreEngagementChatHeader}>{`Customer Service`}</div>
-        <div className={classes.twcCustomerPreEngagementRoot}>
+        <div>{`Customer Service`}</div>
+        <div>
           <Grid container item xs={12}>
             <TextField
               placeholder="Your Name*"
               fullWidth
               multiline={false}
-              className={classes.twcCustomerPreEngagementTextField}
               margin="normal"
               onChange={(e) => this.handleInputChange(e, 'name')}
               value={inputName}
@@ -166,7 +166,6 @@ class CustomerServicePreEngagementForm extends Component {
               placeholder="Your Email*"
               fullWidth
               multiline={false}
-              className={classes.twcCustomerPreEngagementTextFieldEmail}
               margin="normal"
               onChange={(e) => this.handleInputChange(e, 'email')}
               value={inputEmail}
@@ -182,7 +181,6 @@ class CustomerServicePreEngagementForm extends Component {
               placeholder="Order number"
               fullWidth
               multiline={false}
-              className={classes.twcCustomerPreEngagementTextField}
               margin="normal"
               onChange={(e) => this.handleInputChange(e, 'orderNumber')}
               value={inputOrderNumber}
@@ -196,7 +194,6 @@ class CustomerServicePreEngagementForm extends Component {
               placeholder="Message*"
               multiline
               rows="5"
-              className={classes.twcCustomerPreEngagementTextArea}
               margin="normal"
               inputRef={this.msgRef}
               onChange={(e) => this.handleInputChange(e, 'message')}
@@ -209,7 +206,6 @@ class CustomerServicePreEngagementForm extends Component {
                 item
                 xs={12}
                 direction="column"
-                className={classes.twcCustomerPreEngagementAttachmentContainer}
               >
                 <AttachmentItem
                   key={attachment.name}
@@ -221,8 +217,8 @@ class CustomerServicePreEngagementForm extends Component {
               </Grid>
             )}
           </Grid>
-          <div className={classes.twcCustomerPreEngagementBtnContainer}>
-            <div className={classes.pickerButtons}>
+          <div>
+            <div >
               <AttachmentPicker
                 onAttachmentSelected={this.handleAttachmentSelected}
                 onClearAttachment={this.handleClearAttachment}
@@ -230,11 +226,10 @@ class CustomerServicePreEngagementForm extends Component {
                 errorMsg={errorMsg}
               />
             </div>
-          </div>
-          <p ref={this.scrollRef} className={classes.twcCustomerPreEngagementErrorMessage}>{errorMsg.message}</p>
+          </div> 
+          <p ref={this.scrollRef}>{errorMsg.message}</p>
           <button
             onClick={this.canSubmit() ? this.handleSubmit : null}
-            className={classes.twcCustomerPreEngagementSubmitButton}
             disabled={!this.canSubmit()}
             fullWidth
           >
@@ -246,4 +241,4 @@ class CustomerServicePreEngagementForm extends Component {
   }
 }
 
-export default withStyles(styles)(CustomerServicePreEngagementForm);
+export default CustomerServicePreEngagementForm;

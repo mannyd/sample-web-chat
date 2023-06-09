@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import {
   Grid,
   Typography,
-  withStyles,
-  CircularProgress,
-  MuiThemeProvider
-} from '@material-ui/core';
+  CircularProgress
+} from '@mui/material';
+import { withStyles } from '@mui/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import clsx from 'clsx';
 
-import CloseIcon from '@material-ui/icons/Close';
-import PhotoIcon from '@material-ui/icons/Photo';
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import CloseIcon from '@mui/icons-material/Close';
+import PhotoIcon from '@mui/icons-material/Photo';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 import defaultTheme from '../../themes/default-theme';
 import styles from './styles';
@@ -76,7 +76,7 @@ class AttachmentItem extends Component {
     const thumbnailUrl = attachment.data ? attachment.data : signedUrl;
 
     return (
-      <MuiThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={defaultTheme}>
         {canDelete && (
           <Twilio.FlexWebChat.IconButton
             icon={<CloseIcon fontSize='small' className={classes.twcAttachmentItemCrossIcon} />}
@@ -113,7 +113,7 @@ class AttachmentItem extends Component {
 
           </div>
         </Grid>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

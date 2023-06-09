@@ -1,5 +1,3 @@
-import { ImportantDevices } from "@material-ui/icons";
-
 export default theme => ({
   twcCustomerPreEngagementNmInput: {
     marginTop: 12

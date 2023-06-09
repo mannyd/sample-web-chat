@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
 import styles from './styles';
 import NMIconButton from '../NMIconButton';
 import AttachIcon from '../../assets/AttachIcon';
+import { withStyles } from '@mui/styles';
 
 class AttachmentPicker extends Component {
   constructor(props) {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { withStyles, MuiThemeProvider, Divider, Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import {
   FileHelpers,
   InputHelpers,
   AttachmentHelpers,
-  UtagHelpers
 } from '../../utils/helpers';
 import NMInput from '../NMInput';
 import NMIconButton from '../NMIconButton';
@@ -133,7 +134,7 @@ class ChatInput extends Component {
       (inputText.length > 0 && !uploading);
 
     return (
-      <MuiThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={defaultTheme}>
         <div className={classes.twcChatInputRoot}>
           <Grid container item xs={12}>
             <NMInput
@@ -204,7 +205,7 @@ class ChatInput extends Component {
             </div>
           )}
         </div>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

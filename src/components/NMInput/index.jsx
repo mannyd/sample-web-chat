@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import clsx from 'clsx';
-import { TextField, withStyles } from '@material-ui/core';
+import { TextField } from '@mui/material';
+import { withStyles } from '@mui/styles';
 import styles from './styles';
 
 class NMInput extends Component {

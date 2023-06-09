@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import './activeChatAgentGreeting.css';
 import React, { Component } from 'react';
 import { getPredefinedMessage } from '../../config/sample/proactive-chat';

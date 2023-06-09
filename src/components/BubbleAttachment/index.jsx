@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Link, withStyles } from '@material-ui/core';
+import { Grid, Link } from '@mui/material';
+import { withStyles } from '@mui/styles';
 import clsx from 'clsx';
 import styles from './styles';
 import AttachmentItem from '../AttachmentItem';
