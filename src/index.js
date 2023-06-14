@@ -54,9 +54,16 @@ class SampleWebChatWidget {
           ) {
             Config[
               brand
-            ].widgetConfig.colorTheme.overrides.MainContainer.bottom = "90px";
+            ].widgetConfig.colorTheme.overrides.MainContainer.bottom = "0px";
           }
-
+          if (
+            !Config[brand].widgetConfig.colorTheme.overrides.MainContainer
+              .right
+          ) {
+            Config[
+              brand
+            ].widgetConfig.colorTheme.overrides.MainContainer.right = "0px";
+          }
           if (!Config[brand].widgetConfig.colorTheme.overrides.EntryPoint) {
             Config[brand].widgetConfig.colorTheme.overrides.EntryPoint = {};
           }
@@ -75,7 +82,33 @@ class SampleWebChatWidget {
             Config[
               brand
             ].widgetConfig.colorTheme.overrides.EntryPoint.Container.bottom =
-              "94px";
+              "15px";
+          }
+          if (
+            !Config[brand].widgetConfig.colorTheme.overrides.EntryPoint
+              .Container.right
+          ) {
+            Config[
+              brand
+            ].widgetConfig.colorTheme.overrides.EntryPoint.Container.right =
+              "15px";
+          }
+          if (
+            !Config[brand].widgetConfig.colorTheme.overrides.EntryPoint
+              .Container.borderRadius
+          ) {
+            Config[
+              brand
+            ].widgetConfig.colorTheme.overrides.EntryPoint.Container.borderRadius =
+              "0px";
+          }
+          if (
+            !Config[brand].widgetConfig.colorTheme.overrides.MainContainer
+              .zIndex
+          ) {
+            Config[
+              brand
+            ].widgetConfig.colorTheme.overrides.MainContainer.zIndex = 50;
           }
         }
 
