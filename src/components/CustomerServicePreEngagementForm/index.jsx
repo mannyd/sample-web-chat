@@ -142,7 +142,7 @@ class CustomerServicePreEngagementForm extends Component {
         <style>
           {`
             .Twilio-MainContainer {
-              height: 465px;
+              height: 430px;
             }
           `}
         </style>
