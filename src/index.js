@@ -75,41 +75,6 @@ class SampleWebChatWidget {
               brand
             ].widgetConfig.colorTheme.overrides.EntryPoint.Container = {};
           }
-          if (
-            !Config[brand].widgetConfig.colorTheme.overrides.EntryPoint
-              .Container.bottom
-          ) {
-            Config[
-              brand
-            ].widgetConfig.colorTheme.overrides.EntryPoint.Container.bottom =
-              "15px";
-          }
-          if (
-            !Config[brand].widgetConfig.colorTheme.overrides.EntryPoint
-              .Container.right
-          ) {
-            Config[
-              brand
-            ].widgetConfig.colorTheme.overrides.EntryPoint.Container.right =
-              "15px";
-          }
-          if (
-            !Config[brand].widgetConfig.colorTheme.overrides.EntryPoint
-              .Container.borderRadius
-          ) {
-            Config[
-              brand
-            ].widgetConfig.colorTheme.overrides.EntryPoint.Container.borderRadius =
-              "0px";
-          }
-          if (
-            !Config[brand].widgetConfig.colorTheme.overrides.MainContainer
-              .zIndex
-          ) {
-            Config[
-              brand
-            ].widgetConfig.colorTheme.overrides.MainContainer.zIndex = 50;
-          }
         }
 
         const instance = await Twilio.FlexWebChat.createWebChat({

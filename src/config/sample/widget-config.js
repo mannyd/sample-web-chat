@@ -1,4 +1,6 @@
+import React from "react";
 import moment from 'moment-timezone';
+import ChatIcon from '../../assets/ChatIcons';
 export function preFillPreEngagementForm(data, widgetConfig) {
   const config = widgetConfig.preEngagementConfig;
   const preFilledFields = config.fields.map(fieldConfig => {
@@ -178,6 +180,9 @@ export const SampleWidgetConfig = {
       },
       showTitle: false,
       imageUrl: ' '
+    },
+    EntryPoint: {
+      iconClosed: <ChatIcon />
     }
   },
   colorTheme: {
@@ -221,6 +226,13 @@ export const SampleWidgetConfig = {
       },
       EntryPoint: {
         Container: {
+          height: 40,
+          borderRadius: 0,
+          right: 15,
+          bottom: 15,
+          paddingLeft: 10,
+          paddingRight: 10,
+          paddingTop: 9,
           backgroundImage: 'linear-gradient(to top, #000000, #000000)',
           '&:hover': {
             backgroundColor: 'rgba(255,255,255,0.2)',
