@@ -1,0 +1,52 @@
+Why:
+
+The current system stores documents in an AWS S3 bucket, but there's a desire to introduce in-line editing for docx, xlsx, and pptx files. Rather than building custom components to mimic SharePoint functionality, it's proposed to leverage SharePoint itself for document storage and editing capabilities. This shift aims to streamline the editing process and provide a familiar environment for users.
+
+How:
+
+Documents would be stored directly in an IS SharePoint site accessible only to MT users. When opened, these documents would display within the browser using Word, Excel, or PowerPoint software embedded in SharePoint. Users can edit documents directly in SharePoint or access them from within the MT application, achieving the desired in-line editing feature.
+
+Challenges:
+
+Several challenges need addressing before implementation:
+
+Collaboration with IP & IS teams to open up firewalls and establish seamless authentication with SharePoint APIs.
+Acquiring necessary SharePoint API licenses for reading and writing access.
+Some amount of training required for the MT users on how to use SharePoint
+Extensive frontend and backend development work is required, including creating feature-rich components on the frontend and implementing new endpoints in the backend to connect seamlessly with SharePoint.
+For the backend, the following endpoints would be required:
+
+GET /documents: To retrieve a list of documents from SharePoint.
+GET /documents/{id}: To retrieve the content of a selected document from SharePoint.
+POST /documents/{id}/translations: To write the translated document back to SharePoint.
+
+When:
+A Proof of Concept (POC) is planned between April and June to address these challenges and collaborate with various teams to understand the nuances of SharePoint API access and SSO to SharePoint API with seamless authentication & authorization. If successful, the implementation of expanded functionalities is scheduled for the Oct-Dec quarter. This phased approach allows for thorough testing and collaboration to ensure a smooth integration with SharePoint.
+
+====
+
+Why:
+
+The current utilization of AWS Translate presents challenges, including limitations in translating PDFs, Excel, and PowerPoint documents nateively, as well as constraints on file sizes, such as the 100kb limit for Word documents, leading to a need for custom our own workarounds. As an alternative, Google Translation, offers a broader range of native capabilities, supporting various file formats natively, upto 10MB file size, making it a potential solution. However, transitioning to Google Translation introduces challenges regarding integration, consistency, and the need for domain-specific customization.
+
+Challenges:
+
+Transitioning from AWS to Google: Ensuring seamless integration between AWS services and Google Cloud, including potential technical hurdles and authentication/authorization complexities.
+Cost and Account Management: Assessing additional costs and technical considerations associated with creating a Google Cloud account from IP and managing ongoing expenses.
+Seamless Authentication and Authorization: Establishing secure and efficient authentication and authorization mechanisms between the AWS and Google Cloud environments.
+
+Limitations:
+
+Scanned PDF Support: Google Translation API also does not support natevily translating scanned PDF
+Note that Google Translation does not offer Custom Terminology feature directly as like AWS Translate. Instead it offers model customization to improve translation quality for specific domains. Here is the steps involved at a high level to achieve domain specific customization of the AutoML.
+
+Preparing Training Data: Gather a dataset of taxation-related documents in the desired languages, encompassing tax laws, forms, regulations, etc.
+Labeling Data (Optional): Label specific terminology or phrases to guide translation accuracy.
+Training Custom Translation Model: Utilize Google Cloud Translation API's AutoML Translation or custom model training features to train a model using the prepared dataset.
+Evaluating and Iterating: Assess the model's performance with validation data, iterating as necessary to enhance translation quality.
+Deploying Custom Model: Deploy the custom translation model to Google Cloud Translation API for application use.
+
+
+When:
+
+Pending resolution of these challenges, a Proof of Concept (POC) can be planned between April and June to validate the feasibility of integrating Google Translation. Upon successful validation, expansion of functionalities using Google Translation API is projected for the Jan - March quarter of 2025. Alternatively, if challenges persist or if deemed less feasible, efforts may continue to enhance AWS Translate capabilities or explore alternative solutions for unaddressed requirements, such as investigating superior PDF APIs for supporting non-scanned PDFs.
